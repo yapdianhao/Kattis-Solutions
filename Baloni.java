@@ -6,19 +6,21 @@ class Baloni {
 
     public static void main(String[] args) {
         int balloons = io.getInt();
-        HashSet<Integer> hash = new HashSet<>();
-        int[] arr = new int[balloons];
+        int[] arr = new int[balloons + 1];
         for (int i = 0; i < balloons; i++) {
-            arr[i] = io.getInt();
-        }
-        int r = 0;
-        for (int i : arr) {
-            if (!hash.contains(i + 1)) {
-                r++;
+            int curr = io.getInt();
+            if (arr[curr] == 0) {
+                arr[curr - 1]++;
+            } else {
+                arr[curr - 1]++;
+                arr[curr]--;
             }
-            hash.add(i);
         }
-        io.println(r);
+        int total = 0;
+        for (int i = 0; i <= balloons; i++) {
+            total += arr[i];
+        }
+        io.println(total);
         io.close();
     }
 }

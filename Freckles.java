@@ -38,32 +38,23 @@ class Freckles {
             pq.add(edge);
         }
         double res = 0;
-        /*int t = 0;
-        while (!pq.isEmpty() && t < nodes - 1) {
-            Edge curr = pq.poll();
-            if (visited[curr.src] && visited[curr.dest]) continue;
-            visited[curr.src] = visited[curr.dest] = true;
-            res += curr.w;
-            t++;
-            if (visited[curr.src]) {
-                for (Edge n : adj.get(curr.src)) {
-                    pq.add(n);
-                } 
-            }
-            if (visited[curr.dest]) {
-                for (Edge n : adj.get(curr.dest)) {
-                    pq.add(n);
-                }
-            }
-        }*/
+        /*
+         * int t = 0; while (!pq.isEmpty() && t < nodes - 1) { Edge curr = pq.poll(); if
+         * (visited[curr.src] && visited[curr.dest]) continue; visited[curr.src] =
+         * visited[curr.dest] = true; res += curr.w; t++; if (visited[curr.src]) { for
+         * (Edge n : adj.get(curr.src)) { pq.add(n); } } if (visited[curr.dest]) { for
+         * (Edge n : adj.get(curr.dest)) { pq.add(n); } } }
+         */
         while (!pq.isEmpty()) {
             Edge curr = pq.poll();
-            if (visited[curr.dest]) continue;
+            if (visited[curr.dest])
+                continue;
             io.println(curr);
             res += curr.w;
             visited[curr.dest] = true;
             for (Edge neighbour : adj.get(curr.dest)) {
-                if (!visited[neighbour.dest]) pq.add(neighbour);
+                if (!visited[neighbour.dest])
+                    pq.add(neighbour);
             }
         }
         io.printf("%.2f", res);
