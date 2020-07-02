@@ -26,7 +26,6 @@ int main() {
     }
     int total = 0;
     while (!same(arr, registers)) {
-        //cout << "here" << endl;
         total += 1;
         increment(arr, registers, 0);
     }
